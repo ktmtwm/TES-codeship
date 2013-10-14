@@ -1,0 +1,8 @@
+{
+    "modules" : {
+        "optimizer" : {
+            "js" : "uglify-js",
+            "css" : "clean-css"
+        }
+    }
+}
