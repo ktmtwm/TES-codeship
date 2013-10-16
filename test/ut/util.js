@@ -1123,7 +1123,7 @@ describe('_download(url, [callback], [extract], [opt])',function(){
         }
     });
     it('general', function(done){
-        var url = 'http://10.48.30.87:8088/test/download/downTest01.tar';
+        var url = 'http://ktmwm.kd.io/test/download/downTest01.tar';
 
         var path = fis.project.getTempPath('downloads');
         var hash = fis.util.md5( url ,8);
@@ -1136,7 +1136,7 @@ describe('_download(url, [callback], [extract], [opt])',function(){
 
     it('extract', function(done){
         var name = 'downTest';
-        var url = 'http://10.48.30.87:8088/test/download/'+name+'.tar';
+        var url = 'http://ktmwm.kd.io/test/download/'+name+'.tar';
         var extract = downdir ;
         _.download(url, function(){
             var hash = fis.util.md5( url ,8);
@@ -1150,7 +1150,7 @@ describe('_download(url, [callback], [extract], [opt])',function(){
     });
 
     it('not_exist', function(done){
-        var url = 'http://10.48.30.87:8088/test/download/downTest05.tar';         //不存在的包
+        var url = 'http://ktmwm.kd.io/test/download/downTest05.tar';         //不存在的包
         var not_exist = 0;
         _.download(url, function(msg){
             if(msg == 404)
@@ -1168,7 +1168,7 @@ describe('_download(url, [callback], [extract], [opt])',function(){
     });
 
     it('extract-error', function(done){
-        var url = 'http://10.48.30.87:8088/test/download/downTest06.tar';
+        var url = 'http://ktmwm.kd.io/test/download/downTest06.tar';
         var not_exist = 0;
         var extract = downdir ;
         _.download(url, function(msg){
@@ -1186,7 +1186,7 @@ describe('_download(url, [callback], [extract], [opt])',function(){
     });
 
     it('下载错误', function(){
-        var url = 'http://10.48.30.87:8088/test/download/test.tar.gz';
+        var url = 'http://ktmwm.kd.io/Web/test/download/test.tar.gz';
         var extract = downdir ;
         _.download(url, function(){
             var hash = fis.util.md5( url ,8);
@@ -1198,9 +1198,9 @@ describe('_download(url, [callback], [extract], [opt])',function(){
 });
 
 describe('_upload(url, [opt], [data], content, subpath, callback)',function(){
-    it('general',function(done){
-        var receiver = 'http://web.baidu.com:8088/test/upload/receiver.php';
-        var to = '/home/work/repos/test/upload';
+    it.only('general',function(done){
+        var receiver = 'http://ktmwm.kd.io/test/upload/receiver.php';
+        var to = '/home/ktmwm/Web/test/upload';//'http://ktmwm.kd.io/Web/test/upload';
         var release = '/a.js';
         var content = 'content';
         var subpath = '/';
@@ -1222,8 +1222,8 @@ describe('_upload(url, [opt], [data], content, subpath, callback)',function(){
     });
 
     it('err--not exist', function(done){
-        var receiver = 'http://web.baidu.com:8088/test/receiver.php'; //non exist receiver
-        var to = '/home/work/repos/test/upload';
+        var receiver = 'http://ktmwm.kd.io/test/receiver.php'; //non exist receiver
+        var to = '/home/ktmwm/Web/test/upload';
         var release = '/a.js';
         var content = 'content';
         var subpath = '/';
@@ -1240,8 +1240,8 @@ describe('_upload(url, [opt], [data], content, subpath, callback)',function(){
     });
 
     it('content--array',function(done){
-        var receiver = 'http://web.baidu.com:8088/test/upload/receiver.php';
-        var to = '/home/work/repos/test/upload';
+        var receiver = 'http://ktmwm.kd.io/test/upload/receiver.php';
+        var to = '/home/ktmwm/Web/test/upload';
         var release = '/a.js';
         var content = fs.readFileSync(__dirname+"/upload/a.js","utf-8");
         var subpath = '/tmp/b.js';
@@ -1275,7 +1275,7 @@ describe('_install(name, [version], opt)',function(){
         var name = 'installTest';
         var version = '*';
         var opt = {
-            'remote' : 'http://10.48.30.87:8088/test/install' ,
+            'remote' : 'http://ktmwm.kd.io/test/install' ,
             'extract' : installdir,
             'done' : function(){
                 var hash = fis.util.md5( opt.remote+'/'+name+'/'+version+'/.tar' ,8);
@@ -1294,7 +1294,7 @@ describe('_install(name, [version], opt)',function(){
         var name = 'installTest';
         var version = '0.1';
         var opt = {
-            'remote': 'http://10.48.30.87:8088/test/install',
+            'remote': 'http://ktmwm.kd.io/test/install',
             'extract' : installdir,
             'done': function(){
                 var hash = fis.util.md5( opt.remote+'/'+name+'/'+version+'/.tar' ,8);
@@ -1313,7 +1313,7 @@ describe('_install(name, [version], opt)',function(){
         var gname = 'installTest';
         var version = '0.2';
         var opt = {
-            'remote': 'http://10.48.30.87:8088/test/install',
+            'remote': 'http://ktmwm.kd.io/test/install',
             'extract' : installdir,
             'done' : function(name, version){
                 expect(path+'/'+hash+'.tar').to.be.exist;
@@ -1336,7 +1336,7 @@ describe('_install(name, [version], opt)',function(){
         var gname = 'installTest';
         var version = '0.5';                //不存在的版本
         var opt = {
-            'remote': 'http://10.48.30.87:8088/test/install',
+            'remote': 'http://ktmwm.kd.io/test/install',
             'extract' : installdir,
             'done' : function(name, version){
                 expect(true).to.be.false;
@@ -1363,7 +1363,7 @@ describe('_install(name, [version], opt)',function(){
         var name = 'pkgTest';
         var version = '*';
         var opt = {
-            'remote': 'http://10.48.30.87:8088/test/install',
+            'remote': 'http://ktmwm.kd.io/test/install',
             'extract': installdir,
             'done': function(){
                 var hash = fis.util.md5( opt.remote+'/'+name+'/latest.tar' ,8);
