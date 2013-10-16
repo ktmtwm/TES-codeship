@@ -1198,7 +1198,7 @@ describe('_download(url, [callback], [extract], [opt])',function(){
 });
 
 describe('_upload(url, [opt], [data], content, subpath, callback)',function(){
-    it.only('general',function(done){
+    it('general',function(done){
         var receiver = 'http://ktmwm.kd.io/test/upload/receiver.php';
         var to = '/home/ktmwm/Web/test/upload';//'http://ktmwm.kd.io/Web/test/upload';
         var release = '/a.js';
