@@ -1207,9 +1207,13 @@ describe('_upload(url, [opt], [data], content, subpath, callback)',function(){
         var subpath = '/';
         _.upload(receiver, null, {to:to+release},content,subpath,
             function(err,res){
+                console.log('----'+err)
+                console.log('----'+res)
                 if(err || res!='0'){
+                    console.log("111")
                     expect(true).to.be.false;
                 }else{
+                    console.log("222")
                     var file = to+release;
                     var cont = fs.readFileSync(file, "utf-8");
                     expect(fs.existsSync(file)).to.be.true;
