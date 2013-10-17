@@ -1,28 +1,35 @@
 {
-    "name" : "fis-kernel",
-    "description" : "fis kernel.",
-    "version" : "1.8.16",
-    "author" : "FIS Team <fis@baidu.com>",
-    "homepage" : "http://fis.baidu.com/",
-    "license": "MIT",
-    "keywords": [ "fis" ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/fis-dev/fis-kernel.git"
-    },
-    "engines" : {
-        "node" : ">= 0.8.0"
-    },
-    "main" : "fis-kernel.js",
-    "scripts" : {
-        "test" : "mocha test/ut"
-    },
-    "dependencies" : {
-        "tar"  : "0.1.17",
-        "iconv-lite" : "0.2.10",
-        "chai" : "1.8.0",
-        "fis-optimizer-clean-css" : "0.0.8",
-        "fis-optimizer-uglify-js" : "0.1.0",
-        "fis-packager-map" : "0.0.7"
-    }
+  "name": "fis-kernel",
+  "description": "fis kernel.",
+  "version": "1.8.16",
+  "author": "FIS Team <fis@baidu.com>",
+  "homepage": "http://fis.baidu.com/",
+  "license": "MIT",
+  "keywords": [
+    "fis"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fis-dev/fis-kernel.git"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "main": "fis-kernel.js",
+  "scripts": {
+    "test": "mocha test/ut"
+  },
+  "dependencies": {
+    "tar": "0.1.17",
+    "iconv-lite": "0.2.10",
+    "chai": "1.8.0",
+    "fis-optimizer-clean-css": "0.0.8",
+    "fis-optimizer-uglify-js": "0.1.0",
+    "fis-packager-map": "0.0.7",
+    "coveralls": "~2.3.0",
+    "mocha-lcov-reporter": "0.0.1"
+  },
+  "bin": {
+    "coveralls": "./node_modules/coveralls/bin/coveralls.js"
+  }
 }
