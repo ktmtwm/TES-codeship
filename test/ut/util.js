@@ -1267,122 +1267,122 @@ describe('_parseUrl(url, opt)',function(){
 //     });
 // });
 
-describe('_install(name, [version], opt)',function(){
-    var installdir = __dirname+'/install/';
-    after(function(){
-        //清空install文件夹
-        fis.cache.clean(installdir);
-    });
+// describe('_install(name, [version], opt)',function(){
+//     var installdir = __dirname+'/install/';
+//     after(function(){
+//         //清空install文件夹
+//         fis.cache.clean(installdir);
+//     });
 
-    it('general', function(done){
-        var name = 'installTest';
-        var version = '*';
-        var opt = {
-            'remote' : 'http://ktmwm.kd.io/test/install' ,
-            'extract' : installdir,
-            'done' : function(){
-                var hash = fis.util.md5( opt.remote+'/'+name+'/'+version+'/.tar' ,8);
-                var path = fis.project.getTempPath('downloads');
-                expect(path+'/'+hash+'.tar').to.be.exist;
-                expect(installdir+name).to.be.exist;
-                done();
-            }
-        };
+//     it('general', function(done){
+//         var name = 'installTest';
+//         var version = '*';
+//         var opt = {
+//             'remote' : 'http://ktmwm.kd.io/test/install' ,
+//             'extract' : installdir,
+//             'done' : function(){
+//                 var hash = fis.util.md5( opt.remote+'/'+name+'/'+version+'/.tar' ,8);
+//                 var path = fis.project.getTempPath('downloads');
+//                 expect(path+'/'+hash+'.tar').to.be.exist;
+//                 expect(installdir+name).to.be.exist;
+//                 done();
+//             }
+//         };
 
-        _.install(name, version, opt);
+//         _.install(name, version, opt);
 
-    });
+//     });
 
-    it('version-done', function(done){
-        var name = 'installTest';
-        var version = '0.1';
-        var opt = {
-            'remote': 'http://ktmwm.kd.io/test/install',
-            'extract' : installdir,
-            'done': function(){
-                var hash = fis.util.md5( opt.remote+'/'+name+'/'+version+'/.tar' ,8);
-                var path = fis.project.getTempPath('downloads');
-                expect(path+'/'+hash+'.tar').to.be.exist;
-                expect(installdir+name+version).to.be.exist;
+//     it('version-done', function(done){
+//         var name = 'installTest';
+//         var version = '0.1';
+//         var opt = {
+//             'remote': 'http://ktmwm.kd.io/test/install',
+//             'extract' : installdir,
+//             'done': function(){
+//                 var hash = fis.util.md5( opt.remote+'/'+name+'/'+version+'/.tar' ,8);
+//                 var path = fis.project.getTempPath('downloads');
+//                 expect(path+'/'+hash+'.tar').to.be.exist;
+//                 expect(installdir+name+version).to.be.exist;
 
-                done();
-            }
-        };
+//                 done();
+//             }
+//         };
 
-        _.install(name, version, opt );
-    });
+//         _.install(name, version, opt );
+//     });
 
-    it('opt.before', function(done){
-        var gname = 'installTest';
-        var version = '0.2';
-        var opt = {
-            'remote': 'http://ktmwm.kd.io/test/install',
-            'extract' : installdir,
-            'done' : function(name, version){
-                expect(path+'/'+hash+'.tar').to.be.exist;
-                expect(installdir+name+version).to.be.exist;
+//     it('opt.before', function(done){
+//         var gname = 'installTest';
+//         var version = '0.2';
+//         var opt = {
+//             'remote': 'http://ktmwm.kd.io/test/install',
+//             'extract' : installdir,
+//             'done' : function(name, version){
+//                 expect(path+'/'+hash+'.tar').to.be.exist;
+//                 expect(installdir+name+version).to.be.exist;
 
-                done();
-            } ,
-            'before': function(name , version){
-                expect(name).to.be.equal(gname);
-                expect(version).to.be.equal("0.2");
-            }
-        };
-        var hash = fis.util.md5( opt.remote+'/'+gname+'/'+version+'/.tar' ,8);
-        var path = fis.project.getTempPath('downloads');
+//                 done();
+//             } ,
+//             'before': function(name , version){
+//                 expect(name).to.be.equal(gname);
+//                 expect(version).to.be.equal("0.2");
+//             }
+//         };
+//         var hash = fis.util.md5( opt.remote+'/'+gname+'/'+version+'/.tar' ,8);
+//         var path = fis.project.getTempPath('downloads');
 
-        _.install(gname, version, opt );
-    });
+//         _.install(gname, version, opt );
+//     });
 
-    it('opt.err_not exist', function(done){
-        var gname = 'installTest';
-        var version = '0.5';                //不存在的版本
-        var opt = {
-            'remote': 'http://ktmwm.kd.io/test/install',
-            'extract' : installdir,
-            'done' : function(name, version){
-                expect(true).to.be.false;
-            } ,
-            'before': function(name , version){
-                expect(name).to.be.equal(gname);
-                expect(version).to.be.equal("0.5");
-            },
-            'error': function(err){
-                var hash = fis.util.md5( opt.remote+'/'+gname+'/'+version+'/.tar' ,8);
-                var path = fis.project.getTempPath('downloads');
-                expect(fs.existsSync(path+'/'+hash+'.tar')).to.be.false;
-                expect(fs.existsSync(installdir+gname+version)).to.be.false;
+//     it('opt.err_not exist', function(done){
+//         var gname = 'installTest';
+//         var version = '0.5';                //不存在的版本
+//         var opt = {
+//             'remote': 'http://ktmwm.kd.io/test/install',
+//             'extract' : installdir,
+//             'done' : function(name, version){
+//                 expect(true).to.be.false;
+//             } ,
+//             'before': function(name , version){
+//                 expect(name).to.be.equal(gname);
+//                 expect(version).to.be.equal("0.5");
+//             },
+//             'error': function(err){
+//                 var hash = fis.util.md5( opt.remote+'/'+gname+'/'+version+'/.tar' ,8);
+//                 var path = fis.project.getTempPath('downloads');
+//                 expect(fs.existsSync(path+'/'+hash+'.tar')).to.be.false;
+//                 expect(fs.existsSync(installdir+gname+version)).to.be.false;
 
-                done();
-            }
-        };
-        _.install(gname, version, opt );
+//                 done();
+//             }
+//         };
+//         _.install(gname, version, opt );
 
-    });
+//     });
 
-    it('extract, pkg', function(){
-        //pkg项目package.json里配置依赖pkg0.2,两个都应该install
-        var name = 'pkgTest';
-        var version = '*';
-        var opt = {
-            'remote': 'http://ktmwm.kd.io/test/install',
-            'extract': installdir,
-            'done': function(){
-                var hash = fis.util.md5( opt.remote+'/'+name+'/latest.tar' ,8);
-                var hash_dep = fis.util.md5( opt.remote+'/'+name+'/0.2.tar' ,8);
-                var path = fis.project.getTempPath('downloads');
-                expect(path+'/'+hash+'.tar').to.be.exist;
-                expect(path+'/'+hash_dep+'.tar').to.be.exist;
-                expect(installdir+name).to.be.exist;
-                expect(installdir+dep_name).to.be.exist;
-            }
-        };
-        var dep_name = 'pkgTest0.2';
+//     it('extract, pkg', function(){
+//         //pkg项目package.json里配置依赖pkg0.2,两个都应该install
+//         var name = 'pkgTest';
+//         var version = '*';
+//         var opt = {
+//             'remote': 'http://ktmwm.kd.io/test/install',
+//             'extract': installdir,
+//             'done': function(){
+//                 var hash = fis.util.md5( opt.remote+'/'+name+'/latest.tar' ,8);
+//                 var hash_dep = fis.util.md5( opt.remote+'/'+name+'/0.2.tar' ,8);
+//                 var path = fis.project.getTempPath('downloads');
+//                 expect(path+'/'+hash+'.tar').to.be.exist;
+//                 expect(path+'/'+hash_dep+'.tar').to.be.exist;
+//                 expect(installdir+name).to.be.exist;
+//                 expect(installdir+dep_name).to.be.exist;
+//             }
+//         };
+//         var dep_name = 'pkgTest0.2';
 
-        _.install(name, version, opt);
-    });
-});
+//         _.install(name, version, opt);
+//     });
+// });
 
 describe('_.readJSON(path)',function(){
     it('general-readJson',function(){
