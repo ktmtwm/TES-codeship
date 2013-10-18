@@ -1106,96 +1106,96 @@ describe('_parseUrl(url, opt)',function(){
 
 });
 
-describe('_download(url, [callback], [extract], [opt])',function(){
-    var downdir = __dirname+'/download/';
+// describe('_download(url, [callback], [extract], [opt])',function(){
+//     var downdir = __dirname+'/download/';
 
-    before(function(){
-        //清空fis tmp download dir
-        var files = [];
-        var tmpdir = fis.project.getTempPath('downloads');
-        var path = tmpdir;
-        if( fs.existsSync(path) ) {
-            files = fs.readdirSync(path);
-            files.forEach(function(file,index){
-                var curPath = path + "/" + file;
-                fs.unlinkSync(curPath);
-            });
-        }
-    });
-    it('general', function(done){
-        var url = 'http://ktmwm.kd.io/test/download/downTest01.tar';
+//     before(function(){
+//         //清空fis tmp download dir
+//         var files = [];
+//         var tmpdir = fis.project.getTempPath('downloads');
+//         var path = tmpdir;
+//         if( fs.existsSync(path) ) {
+//             files = fs.readdirSync(path);
+//             files.forEach(function(file,index){
+//                 var curPath = path + "/" + file;
+//                 fs.unlinkSync(curPath);
+//             });
+//         }
+//     });
+//     it('general', function(done){
+//         var url = 'http://ktmwm.kd.io/test/download/downTest01.tar';
 
-        var path = fis.project.getTempPath('downloads');
-        var hash = fis.util.md5( url ,8);
-        _.download(url, function(){
-            expect(path+'/'+hash+'.tar').to.be.exist;
-            done();
-        }) ;
+//         var path = fis.project.getTempPath('downloads');
+//         var hash = fis.util.md5( url ,8);
+//         _.download(url, function(){
+//             expect(path+'/'+hash+'.tar').to.be.exist;
+//             done();
+//         }) ;
 
-    });
+//     });
 
-    it('extract', function(done){
-        var name = 'downTest';
-        var url = 'http://ktmwm.kd.io/test/download/'+name+'.tar';
-        var extract = downdir ;
-        _.download(url, function(){
-            var hash = fis.util.md5( url ,8);
-            var path = fis.project.getTempPath('downloads');
-            expect(fs.existsSync(path+'/'+hash+'.tar')).to.be.true;
-            expect(fs.existsSync(extract+'/downTest')).to.be.true;
+//     it('extract', function(done){
+//         var name = 'downTest';
+//         var url = 'http://ktmwm.kd.io/test/download/'+name+'.tar';
+//         var extract = downdir ;
+//         _.download(url, function(){
+//             var hash = fis.util.md5( url ,8);
+//             var path = fis.project.getTempPath('downloads');
+//             expect(fs.existsSync(path+'/'+hash+'.tar')).to.be.true;
+//             expect(fs.existsSync(extract+'/downTest')).to.be.true;
 
-            done();
-        }, extract) ;
+//             done();
+//         }, extract) ;
 
-    });
+//     });
 
-    it('not_exist', function(done){
-        var url = 'http://ktmwm.kd.io/test/download/downTest05.tar';         //不存在的包
-        var not_exist = 0;
-        _.download(url, function(msg){
-            if(msg == 404)
-                not_exist = 1;
+//     it('not_exist', function(done){
+//         var url = 'http://ktmwm.kd.io/test/download/downTest05.tar';         //不存在的包
+//         var not_exist = 0;
+//         _.download(url, function(msg){
+//             if(msg == 404)
+//                 not_exist = 1;
 
-            var path = fis.project.getTempPath('downloads');
-            var hash = fis.util.md5( url ,8);
-            expect(fs.existsSync(path+'/'+hash+'.tar')).to.be.false;
-            expect(not_exist).to.be.equal(1);
+//             var path = fis.project.getTempPath('downloads');
+//             var hash = fis.util.md5( url ,8);
+//             expect(fs.existsSync(path+'/'+hash+'.tar')).to.be.false;
+//             expect(not_exist).to.be.equal(1);
 
-            done();
+//             done();
 
-        }) ;
+//         }) ;
 
-    });
+//     });
 
-    it('extract-error', function(done){
-        var url = 'http://ktmwm.kd.io/test/download/downTest06.tar';
-        var not_exist = 0;
-        var extract = downdir ;
-        _.download(url, function(msg){
-            if(msg == 404)
-                not_exist = 1;
+//     it('extract-error', function(done){
+//         var url = 'http://ktmwm.kd.io/test/download/downTest06.tar';
+//         var not_exist = 0;
+//         var extract = downdir ;
+//         _.download(url, function(msg){
+//             if(msg == 404)
+//                 not_exist = 1;
 
-            var hash = fis.util.md5( url ,8);
-            expect(fs.existsSync(extract+'/'+hash+'.tar')).to.be.false;
-            expect(not_exist).to.be.equal(1);
+//             var hash = fis.util.md5( url ,8);
+//             expect(fs.existsSync(extract+'/'+hash+'.tar')).to.be.false;
+//             expect(not_exist).to.be.equal(1);
 
-            done();
-        }, extract,{
-            'data' : "write opt.data!"
-        }) ;
-    });
+//             done();
+//         }, extract,{
+//             'data' : "write opt.data!"
+//         }) ;
+//     });
 
-    it('下载错误', function(){
-        var url = 'http://ktmwm.kd.io/Web/test/download/test.tar.gz';
-        var extract = downdir ;
-        _.download(url, function(){
-            var hash = fis.util.md5( url ,8);
-            var path = fis.project.getTempPath('downloads');
-            expect(fs.existsSync(path+'/'+hash+'.tar')).to.be.false;
-        }, extract) ;
-    });
+//     it('下载错误', function(){
+//         var url = 'http://ktmwm.kd.io/Web/test/download/test.tar.gz';
+//         var extract = downdir ;
+//         _.download(url, function(){
+//             var hash = fis.util.md5( url ,8);
+//             var path = fis.project.getTempPath('downloads');
+//             expect(fs.existsSync(path+'/'+hash+'.tar')).to.be.false;
+//         }, extract) ;
+//     });
 
-});
+// });
 
 // describe('_upload(url, [opt], [data], content, subpath, callback)',function(){
 //     it('general',function(done){
