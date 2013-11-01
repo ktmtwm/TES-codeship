@@ -1,4 +1,4 @@
-  "name": "fis-kernel",
+name": "fis-kernel",
   "description": "fis kernel.",
   "version": "1.8.16",
   "author": "FIS Team <fis@baidu.com>",
@@ -23,11 +23,11 @@
     "fis-optimizer-uglify-js": "0.1.0",
     "fis-packager-map": "0.0.7",
     "coveralls": "~2.3.0",
-    "mocha-lcov-reporter": "0.0.1"
+    "mocha-lcov-reporter": "0.0.1",
+    "mocha" : "1.13.0"
   },
   "scripts": {
-    "test": "npm install mocha" ,
-             "mocha test/ut"
+    "test": "mocha test/ut"
   },
   "bin": {
     "coveralls": "./node_modules/coveralls/bin/coveralls.js"
