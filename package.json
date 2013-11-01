@@ -1,4 +1,5 @@
-"name": "fis-kernel",
+{
+  "name": "fis-kernel",
   "description": "fis kernel.",
   "version": "1.8.16",
   "author": "FIS Team <fis@baidu.com>",
