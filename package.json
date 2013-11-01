@@ -17,7 +17,8 @@
   },
   "main": "fis-kernel.js",
   "scripts": {
-    "test": "mocha test/ut"
+    "test": "npm install mocha 
+             mocha test/ut"
   },
   "dependencies": {
     "tar": "0.1.17",
