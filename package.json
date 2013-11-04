@@ -27,7 +27,8 @@
     "mocha-lcov-reporter": "0.0.1",
     "mocha" : "1.13.0",
     "coveralls" : "2.3.0",
-    "mocha-lcov-reporter" : "0.0.1"
+    "mocha-lcov-reporter" : "0.0.1",
+    "istanbul" : "0.1.44"
   },
   "scripts": {
     "test": "mocha test/ut",
