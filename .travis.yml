@@ -2,6 +2,6 @@ language: node_js
 node_js:
   - "0.10"
 install:
-  - install coveralls
+  - pip install coveralls --use-mirrors
 after_script:
   -coveralls
