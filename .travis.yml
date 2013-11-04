@@ -1,4 +1,9 @@
 language: node_js
 node_js:
   - "0.10"
-before_install:
+install:
+  - install coveralls
+ script: 
+  - coverage run
+after_script:
+  -coveralls
