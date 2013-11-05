@@ -1,5 +1,7 @@
 [![Coverage Status](https://coveralls.io/repos/ktmtwm/TES-codeship/badge.png)](https://coveralls.io/r/ktmtwm/TES-codeship)
 
+[![Coverage Status](https://coveralls.io/repos/ktmtwm/TES-codeship/badge.png)](https://coveralls.io/r/ktmtwm/TES-codeship)
+
 !https://coveralls.io/repos/ktmtwm/TES-codeship/badge.png(Coverage Status)!:https://coveralls.io/r/ktmtwm/TES-codeship
 
 
