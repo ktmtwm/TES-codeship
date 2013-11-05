@@ -31,9 +31,8 @@
     "istanbul" : "0.1.44"
   },
   "scripts": {
-    "test": "mocha test/ut",
-    "coveralls" : "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
-  }, 
+    "test": "make test-coveralls"
+    }, 
   "bin": {
     "coveralls": "./node_modules/coveralls/bin/coveralls.js"
   }
