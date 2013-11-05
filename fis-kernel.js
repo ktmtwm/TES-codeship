@@ -110,5 +110,3 @@ fis.info = fis.util.readJSON(__dirname + '/package.json');
 
 //kernel version
 fis.version = fis.info.version;
-
-fis. = process.env.QUICKSORT_COV ? require('./lib-cov/quicksort')  : require('./lib/quicksort');
